@@ -51,7 +51,12 @@ neoForge {
 
     // Default run configurations.
     // These can be tweaked, removed, or duplicated as needed.
-  
+
+    mixin {
+        add sourceSets.main, 'hudadjuster.refmap.json'
+        config 'mixins.hudadjuster.json'
+    }
+    
     runs {
         client {
             client()

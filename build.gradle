@@ -10,12 +10,10 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 neoForge {
     version = project.neo_version
-    // 不用在这里配置 Mixin，通过 resources 和 annotationProcessor 处理
 }
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
-    // 添加 Mixin 注解处理器，用于生成 refmap
     annotationProcessor "org.spongepowered:mixin:0.8.7:processor"
 }
 
@@ -27,10 +25,20 @@ repositories {
     }
 }
 
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
-}
+// 明确指定源码目录
 sourceSets.main.java.srcDirs 'src/main/java'
+
+// 自定义 jar 任务，确保包含所有类文件
 jar {
     from sourceSets.main.output
+    manifest {
+        attributes(
+            'Implementation-Title': 'HUD Adjuster',
+            'Implementation-Version': project.version
+        )
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }

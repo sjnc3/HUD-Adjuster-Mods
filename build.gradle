@@ -9,6 +9,7 @@ base {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
+// 显式指定源码目录
 sourceSets {
     main {
         java {
@@ -22,6 +23,9 @@ sourceSets {
 
 neoForge {
     version = project.neo_version
+    runs {
+        // 不需要运行配置，只用于编译
+    }
 }
 
 dependencies {
@@ -37,6 +41,7 @@ repositories {
     }
 }
 
+// 打包所有 class 文件
 jar {
     from sourceSets.main.output
     manifest {

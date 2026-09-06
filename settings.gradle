@@ -1,9 +1,10 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
+        maven {
+            name = 'NeoForge'
+            url = 'https://maven.neoforged.net/releases'
+        }
     }
 }
-
-plugins {
-    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
-}
+rootProject.name = 'HUD-Adjuster-Mods'   // 或者你的实际项目名

@@ -188,8 +188,4 @@ idea {
         downloadSources = true
         downloadJavadoc = true
     }
-}
-mixin {
-        add sourceSets.main, 'hudadjuster.refmap.json'
-        config 'mixins.hudadjuster.json'
-    }
+}    

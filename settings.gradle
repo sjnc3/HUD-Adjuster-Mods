@@ -7,4 +7,4 @@ pluginManagement {
         }
     }
 }
-rootProject.name = 'HUD-Adjuster-Mods'   // 或者你的实际项目名
+rootProject.name = 'HUD-Adjuster-Mods'

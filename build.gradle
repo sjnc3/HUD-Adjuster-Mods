@@ -1,29 +1,30 @@
 plugins {
-    id 'net.neoforged.gradle.userdev' version '7.0.100'
+    id 'net.neoforged.moddev' version '2.0.146'
 }
 
 base {
     archivesName = "hudadjuster"
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+neoForge {
+    version = project.neo_version
+    // 不用在这里配置 Mixin，通过 resources 和 annotationProcessor 处理
+}
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
+    // 添加 Mixin 注解处理器，用于生成 refmap
+    annotationProcessor "org.spongepowered:mixin:0.8.7:processor"
 }
 
 repositories {
     mavenCentral()
-    mavenLocal()
     maven {
         name = 'NeoForge'
         url = 'https://maven.neoforged.net/releases'
     }
-}
-
-mixin {
-    add sourceSets.main, 'hudadjuster.refmap.json'
-    config 'mixins.hudadjuster.json'
 }
 
 tasks.withType(JavaCompile).configureEach {

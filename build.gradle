@@ -30,3 +30,7 @@ repositories {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
+sourceSets.main.java.srcDirs 'src/main/java'
+jar {
+    from sourceSets.main.output
+}
